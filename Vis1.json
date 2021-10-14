@@ -1,0 +1,105 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json" ,
+    "width": 1200,
+    "height": 600,
+    "title": "Road Collision Casualities in Queensland",
+    "params":[
+        {
+            "name": "year",
+            "bind":{
+                "input": "select",
+                "options":[
+                    null,
+                    "2001","2002","2003","2004","2005","2006","2007","2008","2009",
+                    "2010","2011","2012","2013","2014","2015","2016","2017","2018"
+                ],
+                "labels":[
+                    "Show All",
+                    "2001","2002","2003","2004","2005","2006","2007","2008","2009",
+                    "2010","2011","2012","2013","2014","2015","2016","2017","2018"
+                ],
+                "name":"Year Selection  "
+            }
+        }
+    ],
+    "layer": [
+        {
+            "data":{
+                "url":"https://raw.githubusercontent.com/ChantelRaja/FIT3179-Assignment2/main/Map%20Data/QLD_STATE_POLYGON_shp.json",
+                "format":{
+                    "type": "topojson",
+                    "feature": "QLD_STATE_POLYGON_shp"
+                }
+            },
+            "mark":{
+                "type":"geoshape",
+                "fill": "lightgrey",
+                "opacity": 0.6
+            }
+        },
+        {
+            "data":{
+                "url": "https://raw.githubusercontent.com/ChantelRaja/FIT3179-Assignment2/main/Data/Vis1Data.csv"
+            },
+            "transform": [
+                {"filter":"year == null || datum.Year == year"}
+            ],
+            "mark":{
+                "type": "circle"
+            },
+            "encoding": {
+                "longitude":{
+                    "field": "Longitude",
+                    "type": "quantitative"
+                },
+                "latitude":{
+                    "field": "Latitude",
+                    "type": "quantitative"
+                },
+                "size":{
+                    "field": "Casualties",
+                    "type":"quantitative",
+                    "scale":{"domain": [1,30]}  
+                },
+                "color":{
+                    "field": "Casualties",
+                    "type": "quantitative",
+                    "scale": {"scheme":["#b2d8d8","#004c4c"], "domain": [1,30]},
+                    "legend":{"orient": "top-right"}
+                },
+                "tooltip":[
+                    {"field": "Longitude", "type":"quantitative", "format": ".4f"},
+                    {"field": "Latitude", "type":"quantitative", "format": ".4f"},
+                    {"field": "Casualties", "type": "quantitative"},
+                    {"field": "Year",  "type": "quantitative"}
+                ]
+            }
+        },
+        {
+            "data":{
+                "url":"https://raw.githubusercontent.com/ChantelRaja/Assignment2/main/Data/Annotation.csv"
+            },
+            "mark":{
+                "type":"text",
+                "align":"right",
+                "text":"Collisions concentrated at Brisbane",
+                "dx":255,
+                "fontSize": 15,
+                "fontStyle":"italic",
+                "fontWeight":200
+            },
+            "encoding":{
+                "longitude":{
+                    "field":"Longitude",
+                    "type":"quantitative"
+                },
+                "latitude":{
+                    "field":"Latitude",
+                    "type":"quantitative"
+                }
+            }
+        }
+    ],
+    "config":{}
+}
+ 

@@ -1,0 +1,57 @@
+
+  h1{
+    font-weight: 900;
+    font-size: xxx-large;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    color:#004c4c;
+  }
+  p{
+      text-align: center;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 500;
+      font-size: large;
+      padding-top: 10px;
+  }
+   body{
+     background-color: rgb(216, 238, 238);
+   }
+   .page{
+     width: 1200px;    
+     background-color: white;   
+     margin: auto;
+     padding: 50px;
+     padding-top: 35px;
+  }
+  .vis-container{
+    width: 100%;
+  }
+  .pure-g{
+    margin-bottom: 25px;
+  }
+  .pure-u-1{
+    text-align: center
+  }
+  .pure-u-1-3{
+      text-align: left
+  }  
+  .pure-u-2-3{
+    text-align: right
+  } 
+  .pure-u-1-1{
+    text-align: right;
+  } 
+  #intro{
+    text-align: center;
+    font-size: medium;
+  } 
+  #meta-top{
+    padding-top: 120px;
+    text-align:end;
+    font-size: medium;
+  }
+  #meta-bottom{
+    text-align:end;
+    font-size: medium;
+  }
+
